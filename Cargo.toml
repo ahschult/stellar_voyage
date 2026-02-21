@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = ["stellar_types", "stellar_preprocessor", "stellar_voyage"]
+
+[workspace.dependencies]
+rkyv = { version = "=0.7.44", features = ["archive_le", "alloc", "validation"] }
+serde = { version = "1.0.153", features = ["derive"] }
+bytemuck = { version = "1.8.2", features = ["derive"] }
+serde_json = "1.0.96"
+stellar_types = { path = "../stellar_types" }

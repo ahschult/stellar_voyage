@@ -1,0 +1,7 @@
+# .gitignore
+/target/
+assets/catalog/*.bin
+assets/catalog/*.json
+gaia_source/
+exoplanet_source/
+/docs
