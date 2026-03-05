@@ -1,10 +1,23 @@
 [workspace]
+members = [
+    "stellar_types",
+    "stellar_preprocessor",
+    "stellar_voyage",
+]
 resolver = "2"
-members = ["stellar_types", "stellar_preprocessor", "stellar_voyage"]
 
 [workspace.dependencies]
-rkyv = { version = "=0.7.44", features = ["archive_le", "alloc", "validation"] }
-serde = { version = "1.0.153", features = ["derive"] }
-bytemuck = { version = "1.8.2", features = ["derive"] }
-serde_json = "1.0.96"
-stellar_types = { path = "../stellar_types" }
+# Pinned exact version — a rkyv mismatch between preprocessor and game
+# produces silent data corruption, not a compile error. Never use a range here.
+rkyv = { version = "=0.7.44", features = ["alloc", "validation"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+bytemuck = { version = "1", features = ["derive"] }
+
+# Preprocessor deps — pinned here so both crates always agree
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+csv = "1"
+rayon = "1"
+indicatif = { version = "0.17", features = ["rayon"] }
+bincode = "1"
