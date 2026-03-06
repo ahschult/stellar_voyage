@@ -13,6 +13,8 @@ rkyv = { version = "=0.7.44", features = ["alloc", "validation"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 bytemuck = { version = "1", features = ["derive"] }
+memmap2  = "0.9"
+tempfile = "3"
 
 # Preprocessor deps — pinned here so both crates always agree
 clap = { version = "4", features = ["derive"] }

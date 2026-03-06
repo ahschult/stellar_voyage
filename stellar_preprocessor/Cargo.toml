@@ -2,6 +2,7 @@
 name = "stellar_preprocessor"
 version = "0.1.0"
 edition = "2021"
+default-run = "stellar_preprocessor"
 
 # FITS support requires libcfitsio on the build machine.
 # Gate it behind a feature so CSV-only builds are always possible.
@@ -10,6 +11,7 @@ fits = ["dep:fitsio"]
 
 [dependencies]
 stellar_types = { path = "../stellar_types" }
+memmap2 = { workspace = true }
 
 rkyv       = { workspace = true }
 serde      = { workspace = true }

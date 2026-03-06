@@ -56,6 +56,7 @@ cargo run -p stellar_preprocessor --release -- \
   --gaia-path data/gaia_source/ \
   --exoplanet-path data/exoplanet_source/PS_table.csv \
   --output-path assets/catalog/ \
+  --chunk-size 50.0 \
   --stats
 ```
 
@@ -65,6 +66,19 @@ Optional flags:
 - `--resume` — skip already-completed pipeline stages
 
 Preprocessor output goes to `assets/catalog/` and is excluded from git.
+
+## Verifying Chunk Output
+
+After running the preprocessor, verify the binary chunk files with the standalone verifier:
+
+```bash
+cargo run -p stellar_preprocessor --bin verify_chunks --release -- \
+  --catalog-path assets/catalog/
+```
+
+The verifier independently loads every chunk file via memory-mapped I/O, validates the rkyv
+byte layout, confirms star counts match `catalog_manifest.json`, and spot-checks that all
+star coordinates fall within their chunk's AABB. It must report zero errors before starting M5.
 
 ## Building the Game
 ```bash
@@ -82,6 +96,9 @@ cargo test --workspace
 
 # Types crate only (rkyv round-trip tests)
 cargo test -p stellar_types -- --nocapture
+
+# Preprocessor unit + integration tests (includes Stage 5 chunk assignment and Stage 6 round-trip)
+cargo test -p stellar_preprocessor -- --nocapture
 ```
 
 ## Development Milestones
@@ -89,9 +106,9 @@ cargo test -p stellar_types -- --nocapture
 | Milestone | Status |
 |---|---|
 | M1 — Types & Workspace | ✅ Complete |
-| M2 — Preprocessor Ingest | ⬜ |
-| M3 — Cross-Reference & Inference | ⬜ |
-| M4 — Chunking & Serialisation | ⬜ |
+| M2 — Preprocessor Ingest | ✅ Complete |
+| M3 — Cross-Reference & Inference | ✅ Complete |
+| M4 — Chunking & Serialisation | ✅ Complete |
 | M5a — Game Foundation | ⬜ |
 | M5b — Catalog Streaming | ⬜ |
 | M6 — Navigation & Warp | ⬜ |
