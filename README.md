@@ -100,18 +100,3 @@ cargo test -p stellar_types -- --nocapture
 # Preprocessor unit + integration tests (includes Stage 5 chunk assignment and Stage 6 round-trip)
 cargo test -p stellar_preprocessor -- --nocapture
 ```
-
-## Development Milestones
-
-| Milestone | Status |
-|---|---|
-| M1 — Types & Workspace | ✅ Complete |
-| M2 — Preprocessor Ingest | ✅ Complete |
-| M3 — Cross-Reference & Inference | ✅ Complete |
-| M4 — Chunking & Serialisation | ✅ Complete |
-| M5a — Game Foundation | ⬜ |
-| M5b — Catalog Streaming | ⬜ |
-| M6 — Navigation & Warp | ⬜ |
-| M7 — Planetary Systems | ⬜ |
-| M8 — HUD Complete | ⬜ |
-| M9 — Polish | ⬜ |
