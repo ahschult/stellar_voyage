@@ -4,7 +4,7 @@ A multi-stage Rust data pipeline ingesting ESA Gaia DR3 (~1.8B stars) and NASA E
 
 The primary engineering work in this repository is the preprocessor pipeline — a production-grade ETL system handling astronomical data at scale, with spatial chunking, multi-source cross-referencing, field-level data provenance classification, and memory-mapped binary serialization designed for sub-millisecond runtime asset loads. The game is the demonstration layer on top of that infrastructure.
 
-> **Note on commit history:** This project was developed in a private Gitea repository from 2026 onward and migrated here for public visibility. The full incremental commit history has been preserved on migration. Active development continues.
+> **Note on commit history:** This project was developed in a private Gitea repository from 2025 onward and migrated here for public visibility. The full incremental commit history has been preserved on migration. Active development continues.
 
 ---
 
